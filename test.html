@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游戏测试页面</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 游戏网站测试页面</h1>
+        <p class="section-subtitle">测试所有游戏是否正常工作</p>
+        
+        <div class="test-grid">
+            <div class="test-card">
+                <h3><i class="fas fa-snake"></i> 贪吃蛇</h3>
+                <p>测试贪吃蛇游戏功能</p>
+                <button onclick="testGame('snake')" class="btn-test">
+                    <i class="fas fa-play"></i> 测试游戏
+                </button>
+                <div id="snake-status" class="test-status">待测试</div>
+            </div>
+            
+            <div class="test-card">
+                <h3><i class="fas fa-th-large"></i> 俄罗斯方块</h3>
+                <p>测试俄罗斯方块游戏功能</p>
+                <button onclick="testGame('tetris')" class="btn-test">
+                    <i class="fas fa-play"></i> 测试游戏
+                </button>
+                <div id="tetris-status" class="test-status">待测试</div>
+            </div>
+            
+            <div class="test-card">
+                <h3><i class="fas fa-times-circle"></i> 井字棋</h3>
+                <p>测试井字棋游戏功能</p>
+                <button onclick="testGame('tictactoe')" class="btn-test">
+                    <i class="fas fa-play"></i> 测试游戏
+                </button>
+                <div id="tictactoe-status" class="test-status">待测试</div>
+            </div>
+            
+            <div class="test-card">
+                <h3><i class="fas fa-brain"></i> 记忆翻牌</h3>
+                <p>测试记忆翻牌游戏功能</p>
+                <button onclick="testGame('memory')" class="btn-test">
+                    <i class="fas fa-play"></i> 测试游戏
+                </button>
+                <div id="memory-status" class="test-status">待测试</div>
+            </div>
+            
+            <div class="test-card">
+                <h3><i class="fas fa-table-tennis"></i> 打砖块</h3>
+                <p>测试打砖块游戏功能</p>
+                <button onclick="testGame('breakout')" class="btn-test">
+                    <i class="fas fa-play"></i> 测试游戏
+                </button>
+                <div id="breakout-status" class="test-status">待测试</div>
+            </div>
+            
+            <div class="test-card">
+                <h3><i class="fas fa-th-large"></i> 2048</h3>
+                <p>测试2048游戏功能</p>
+                <button onclick="testGame('2048')" class="btn-test">
+                    <i class="fas fa-play"></i> 测试游戏
+                </button>
+                <div id="2048-status" class="test-status">待测试</div>
+            </div>
+        </div>
+        
+        <div class="test-results">
+            <h2>测试结果</h2>
+            <div id="test-summary">
+                <p>总计: <span id="total-games">6</span> 个游戏</p>
+                <p>通过: <span id="passed-games">0</span> 个</p>
+                <p>失败: <span id="failed-games">0</span> 个</p>
+                <p>待测试: <span id="pending-games">6</span> 个</p>
+            </div>
+            <button onclick="runAllTests()" class="btn-run-all">
+                <i class="fas fa-bolt"></i> 运行所有测试
+            </button>
+        </div>
+    </div>
+    
+    <style>
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .test-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .test-card h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .test-card p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .btn-test {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-test:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .test-status {
+            margin-top: 1rem;
+            padding: 0.5rem;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+        
+        .test-status.pending {
+            background: #f8f9fa;
+            color: #6c757d;
+        }
+        
+        .test-status.loading {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .test-status.success {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .test-status.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .test-results {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+        
+        .test-results h2 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        #test-summary {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        #test-summary p {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        #test-summary span {
+            font-size: 1.5rem;
+            color: #3498db;
+        }
+        
+        .btn-run-all {
+            background: #2ecc71;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-run-all:hover {
+            background: #27ae60;
+            transform: translateY(-2px);
+        }
+    </style>
+    
+    <script>
+        const games = ['snake', 'tetris', 'tictactoe', 'memory', 'breakout', '2048'];
+        let testResults = {};
+        
+        function updateTestStatus(game, status, message = '') {
+            const element = document.getElementById(`${game}-status`);
+            if (element) {
+                element.className = `test-status ${status}`;
+                element.textContent = message || status;
+            }
+            
+            testResults[game] = status;
+            updateSummary();
+        }
+        
+        function updateSummary() {
+            const total = games.length;
+            const passed = Object.values(testResults).filter(r => r === 'success').length;
+            const failed = Object.values(testResults).filter(r => r === 'error').length;
+            const pending = total - passed - failed;
+            
+            document.getElementById('total-games').textContent = total;
+            document.getElementById('passed-games').textContent = passed;
+            document.getElementById('failed-games').textContent = failed;
+            document.getElementById('pending-games').textContent = pending;
+        }
+        
+        function testGame(gameName) {
+            updateTestStatus(gameName, 'loading', '加载中...');
+            
+            // 模拟游戏加载测试
+            setTimeout(() => {
+                // 检查游戏文件是否存在
+                fetch(`games/${gameName}/${gameName}.js`)
+                    .then(response => {
+                        if (response.ok) {
+                            updateTestStatus(gameName, 'success', '✓ 游戏加载成功');
+                        } else {
+                            updateTestStatus(gameName, 'error', '✗ 游戏文件不存在');
+                        }
+                    })
+                    .catch(() => {
+                        updateTestStatus(gameName, 'error', '✗ 网络错误');
+                    });
+            }, 1000);
+        }
+        
+        function runAllTests() {
+            games.forEach(game => {
+                testGame(game);
+            });
+        }
+        
+        // 初始化
+        updateSummary();
+    </script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小虾游戏中心 - 在线游戏合集</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-gamepad"></i>
+                <span>小虾游戏中心</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#games">游戏</a></li>
+                <li><a href="#about">关于</a></li>
+                <li><a href="#contact">联系</a></li>
+            </ul>
+            <div class="theme-toggle">
+                <i class="fas fa-moon" id="theme-icon"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>欢迎来到<span class="highlight">小虾游戏中心</span></h1>
+                <p>免费在线游戏合集，无需下载，点击即玩！</p>
+                <p class="subtitle">包含经典游戏、益智游戏和休闲游戏</p>
+                <a href="#games" class="btn-primary">开始游戏</a>
+            </div>
+            <div class="hero-image">
+                <div class="game-preview">
+                    <div class="preview-item" id="preview-1"></div>
+                    <div class="preview-item" id="preview-2"></div>
+                    <div class="preview-item" id="preview-3"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 游戏展示区域 -->
+    <section class="games-section" id="games">
+        <div class="container">
+            <h2 class="section-title">精选游戏</h2>
+            <p class="section-subtitle">点击任意游戏开始游玩</p>
+            
+            <div class="games-grid">
+                <!-- 贪吃蛇游戏 -->
+                <div class="game-card" data-game="snake">
+                    <div class="game-icon">
+                        <i class="fas fa-snake"></i>
+                    </div>
+                    <h3>贪吃蛇</h3>
+                    <p>经典贪吃蛇游戏，控制蛇吃食物，避免撞墙或咬到自己。</p>
+                    <div class="game-tags">
+                        <span class="tag">经典</span>
+                        <span class="tag">休闲</span>
+                    </div>
+                    <button class="btn-play" onclick="loadGame('snake')">
+                        <i class="fas fa-play"></i> 开始游戏
+                    </button>
+                </div>
+
+                <!-- 俄罗斯方块 -->
+                <div class="game-card" data-game="tetris">
+                    <div class="game-icon">
+                        <i class="fas fa-th"></i>
+                    </div>
+                    <h3>俄罗斯方块</h3>
+                    <p>排列下落的方块，填满整行即可消除，挑战你的反应速度。</p>
+                    <div class="game-tags">
+                        <span class="tag">益智</span>
+                        <span class="tag">经典</span>
+                    </div>
+                    <button class="btn-play" onclick="loadGame('tetris')">
+                        <i class="fas fa-play"></i> 开始游戏
+                    </button>
+                </div>
+
+                <!-- 井字棋 -->
+                <div class="game-card" data-game="tictactoe">
+                    <div class="game-icon">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <h3>井字棋</h3>
+                    <p>经典的井字棋游戏，与AI对战，看谁能先连成一条线。</p>
+                    <div class="game-tags">
+                        <span class="tag">策略</span>
+                        <span class="tag">双人</span>
+                    </div>
+                    <button class="btn-play" onclick="loadGame('tictactoe')">
+                        <i class="fas fa-play"></i> 开始游戏
+                    </button>
+                </div>
+
+                <!-- 记忆翻牌 -->
+                <div class="game-card" data-game="memory">
+                    <div class="game-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>记忆翻牌</h3>
+                    <p>翻动卡片找到匹配的图案，测试你的记忆力。</p>
+                    <div class="game-tags">
+                        <span class="tag">记忆</span>
+                        <span class="tag">休闲</span>
+                    </div>
+                    <button class="btn-play" onclick="loadGame('memory')">
+                        <i class="fas fa-play"></i> 开始游戏
+                    </button>
+                </div>
+
+                <!-- 打砖块 -->
+                <div class="game-card" data-game="breakout">
+                    <div class="game-icon">
+                        <i class="fas fa-table-tennis"></i>
+                    </div>
+                    <h3>打砖块</h3>
+                    <p>控制挡板反弹小球，击碎所有砖块即可过关。</p>
+                    <div class="game-tags">
+                        <span class="tag">动作</span>
+                        <span class="tag">经典</span>
+                    </div>
+                    <button class="btn-play" onclick="loadGame('breakout')">
+                        <i class="fas fa-play"></i> 开始游戏
+                    </button>
+                </div>
+
+                <!-- 2048 -->
+                <div class="game-card" data-game="2048">
+                    <div class="game-icon">
+                        <i class="fas fa-th-large"></i>
+                    </div>
+                    <h3>2048</h3>
+                    <p>滑动方块合并相同数字，尝试合成2048方块。</p>
+                    <div class="game-tags">
+                        <span class="tag">数字</span>
+                        <span class="tag">益智</span>
+                    </div>
+                    <button class="btn-play" onclick="loadGame('2048')">
+                        <i class="fas fa-play"></i> 开始游戏
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 游戏容器 -->
+    <section class="game-container" id="game-container">
+        <div class="container">
+            <div class="game-header">
+                <h2 id="game-title">选择游戏开始游玩</h2>
+                <div class="game-controls">
+                    <button class="btn-control" id="back-to-games" onclick="hideGame()">
+                        <i class="fas fa-arrow-left"></i> 返回游戏列表
+                    </button>
+                    <button class="btn-control" id="restart-game" onclick="restartGame()" style="display: none;">
+                        <i class="fas fa-redo"></i> 重新开始
+                    </button>
+                </div>
+            </div>
+            <div class="game-area" id="game-area">
+                <div class="game-placeholder">
+                    <i class="fas fa-gamepad"></i>
+                    <p>从左侧选择一款游戏开始游玩</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于区域 -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <h2 class="section-title">关于我们</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>小虾游戏中心</h3>
+                    <p>我们致力于提供免费、有趣、无需下载的在线游戏体验。所有游戏都使用纯HTML5、CSS3和JavaScript开发，确保在任何现代浏览器上都能流畅运行。</p>
+                    <p>我们的目标是让每个人都能轻松享受游戏的乐趣，无需安装任何软件或插件。</p>
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>完全免费</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>无需下载</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>响应式设计</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>开源项目</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <h4>6+</h4>
+                        <p>款游戏</p>
+                    </div>
+                    <div class="stat">
+                        <h4>100%</h4>
+                        <p>免费游玩</p>
+                    </div>
+                    <div class="stat">
+                        <h4>24/7</h4>
+                        <p>在线可用</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系区域 -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">联系我们</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>反馈与建议</h3>
+                    <p>如果你有任何建议或发现了bug，欢迎通过GitHub提交issue。</p>
+                    <div class="contact-links">
+                        <a href="https://github.com" class="contact-link" target="_blank">
+                            <i class="fab fa-github"></i> GitHub仓库
+                        </a>
+                        <a href="#" class="contact-link" onclick="showEmail()">
+                            <i class="fas fa-envelope"></i> 发送反馈
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>快速反馈</h3>
+                    <form id="feedback-form">
+                        <input type="text" placeholder="你的名字" required>
+                        <textarea placeholder="你的反馈或建议" rows="3" required></textarea>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-paper-plane"></i> 发送反馈
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-gamepad"></i>
+                    <span>小虾游戏中心</span>
+                </div>
+                <p class="footer-text">© 2024 小虾游戏中心. 所有游戏均为开源项目，仅供娱乐使用。</p>
+                <div class="footer-links">
+                    <a href="#home">首页</a>
+                    <a href="#games">游戏</a>
+                    <a href="#about">关于</a>
+                    <a href="#contact">联系</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 游戏脚本 -->
+    <script src="js/games.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
