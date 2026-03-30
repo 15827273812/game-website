@@ -242,22 +242,19 @@ function loadSnakeGame(container) {
                 transition: opacity 0.3s;
             "></div>
             
-            <div style="
-                background: rgba(255, 255, 255, 0.1); 
-                padding: 20px; 
-                border-radius: 15px; 
-                display: inline-block;
-                position: relative;
-                max-width: 600px;
-                width: 100%;
-            ">
-                <canvas id="snake-canvas" style="
-                    width: 100%;
-                    height: 400px;
-                    border-radius: 10px;
-                    display: block;
-                    margin: 0 auto;
-                "></canvas>
+            <div class="game-canvas">
+                <div class="game-control-hint">
+                    <strong>控制说明：</strong> 点击游戏区域获得焦点，然后使用方向键或WASD控制
+                </div>
+                <div class="game-status">
+                    <div class="game-score">得分: <span id="snake-score">0</span></div>
+                    <div class="game-controls">
+                        <button class="control-btn" onclick="window.snakeGame?.start()">开始</button>
+                        <button class="control-btn secondary" onclick="window.snakeGame?.reset()">重置</button>
+                        <button class="control-btn secondary" onclick="window.snakeGame?.togglePause()">暂停</button>
+                    </div>
+                </div>
+                <canvas id="snake-canvas" tabindex="0"></canvas>
                 
                 <div style="margin-top: 20px; display: flex; justify-content: center; gap: 15px;">
                     <button id="start-game" style="

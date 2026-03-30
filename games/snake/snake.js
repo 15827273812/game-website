@@ -18,12 +18,21 @@ class SnakeGame {
         this.score = 0;
         this.gameRunning = false;
         
+        // 确保canvas可以获得焦点
+        this.canvas.setAttribute('tabindex', '0');
+        this.canvas.style.outline = 'none';
+        
         // 绑定键盘控制
         this.bindControls();
         
         // 调整画布大小
         this.resizeCanvas();
         window.addEventListener('resize', () => this.resizeCanvas());
+        
+        // 点击canvas时自动获得焦点
+        this.canvas.addEventListener('click', () => {
+            this.canvas.focus();
+        });
     }
     
     resizeCanvas() {
@@ -59,26 +68,38 @@ class SnakeGame {
     }
     
     bindControls() {
-        document.addEventListener('keydown', (e) => {
+        // 绑定到canvas而不是整个document，确保焦点正确
+        this.canvas.addEventListener('keydown', (e) => {
             if (!this.gameRunning) return;
+            
+            // 阻止默认行为，防止页面滚动
+            e.preventDefault();
             
             switch(e.key) {
                 case 'ArrowUp':
+                case 'w':
+                case 'W':
                     if (this.direction.y === 0) {
                         this.direction = {x: 0, y: -1};
                     }
                     break;
                 case 'ArrowDown':
+                case 's':
+                case 'S':
                     if (this.direction.y === 0) {
                         this.direction = {x: 0, y: 1};
                     }
                     break;
                 case 'ArrowLeft':
+                case 'a':
+                case 'A':
                     if (this.direction.x === 0) {
                         this.direction = {x: -1, y: 0};
                     }
                     break;
                 case 'ArrowRight':
+                case 'd':
+                case 'D':
                     if (this.direction.x === 0) {
                         this.direction = {x: 1, y: 0};
                     }
@@ -145,8 +166,11 @@ class SnakeGame {
         this.direction = {x: 1, y: 0}; // 初始向右移动
         this.gameLoop();
         
+        // 自动获得焦点，确保键盘控制正常工作
+        this.canvas.focus();
+        
         // 显示游戏开始提示
-        this.showMessage('游戏开始！使用方向键控制');
+        this.showMessage('游戏开始！使用方向键或WASD控制，点击游戏区域获得焦点');
     }
     
     togglePause() {

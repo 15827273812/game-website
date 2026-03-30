@@ -360,6 +360,31 @@ body {
     justify-content: center;
     box-shadow: var(--box-shadow);
     overflow: hidden;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* 游戏画布容器 */
+.game-canvas {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 游戏画布 */
+.game-canvas canvas {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 500px;
+    border-radius: 10px;
+    display: block;
+    background: rgba(0, 0, 0, 0.1);
+    touch-action: none; /* 防止触摸滚动干扰游戏 */
 }
 
 .game-placeholder {
